@@ -2,6 +2,12 @@
 
 ![Banner](./banner.svg)
 
+## Installation
+
+Is part of Windows 11 so should be available directly on your machine if you're running that OS.
+
+You can install Windows Terminal using the Windows Store but, if you can't, you can download [the latest release from GitHub](https://github.com/microsoft/terminal/releases).
+
 ## Add new profile
 
 Add a new profile to start Ubuntu and directly execute an interactive shell for a given container (let's say `myAppName`):
