@@ -59,3 +59,62 @@ Directly open the desired directory is done by setting the `startingDirectory` n
 ```
 
 You just need to specify the `startingDirectory` node and set it to `\\wsl$\Ubuntu\home\christophe\`
+
+## Open multiple tabs during the startup process
+
+Windows Terminal has a `startupActions` property which allows you to specify actions to be performed during the startup process.
+
+Let's imagine I wish to launch two tabs; the default one (nothing to foresee) and a second tab. To make things easier to maintain, I'll use a profile:
+
+```json
+"startupActions": "; new-tab --profile \"DOS Command Prompt\"",
+```
+
+So now I need to create a profile called `DOS Command Prompt` :
+
+```json
+{
+    "profiles": {
+        "list": [
+            {
+                "backgroundImage": "c:/Users/christophe/backgrounds/xmens.jpg",
+                "backgroundImageOpacity": 0.10000000000000001,
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "DOS Command Prompt"
+            },
+        ]
+    }
+}
+```
+
+And hop, now by starting Windows Terminal, my default terminal will be opened (Ubuntu in my case) and, in a second tab, I'll also open a DOS console.
+
+My profile can be quite complex:
+
+```json
+{
+    "profiles": {
+        "list": [
+            {
+                "backgroundImage": "c:/Users/christophe/backgrounds/MyProject1.jpg",
+                "backgroundImageOpacity": 0.5,
+                "commandline": "wsl.exe -d Ubuntu-20.04",
+                "cursorColor": "#FFFFFF",
+                "guid": "{1de7a17d-42f5-47b6-8196-e48706bf24a7}",
+                "hidden": false,
+                "icon": "ms-appdata:///roaming/ubuntu.png",
+                "name": "MyProject1",
+                "startingDirectory": "\\\\wsl$\\Ubuntu-20.04\\home\\christophe\\repositories\\crescendo2\\federaldatamanager",
+                "tabTitle": "MyProject1"
+            },
+        ]
+    }
+}
+```
+
+And I can have multiple projects and multiple tabs:
+
+```json
+"startupActions": "; new-tab --profile \"MyProjject1\" ; new-tab --profile \"MyProjject2\" ; new-tab --profile \"MyProjject3\" ; new-tab --profile \"MyProjject4\" ",
+```
